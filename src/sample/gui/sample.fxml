@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" prefHeight="321.0" prefWidth="267.0" vgap="10"
+          xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.gui.MyController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <SplitPane dividerPositions="0.7249190938511327" orientation="VERTICAL" prefHeight="318.0" prefWidth="265.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ScrollPane prefHeight="201.0" prefWidth="263.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <ListView fx:id="mFilesList" prefHeight="192.0" prefWidth="254.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="69.0" prefWidth="158.0">
+               <children>
+                  <Button fx:id="mReadFileButton"
+                          layoutX="-7.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="276.0"
+                          text="Read file"
+                          onAction="#handleReadFileAction"/>
+                  <Button fx:id="mWriteFileButton"
+                          layoutX="-6.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="276.0"
+                          text="Write file"
+                          onAction="#handleWriteFileAction"/>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</GridPane>

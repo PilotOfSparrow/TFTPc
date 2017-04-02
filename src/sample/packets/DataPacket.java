@@ -2,18 +2,44 @@ package sample.packets;
 
 import sample.basepackets.DataAckBasePacket;
 
-/**
- * Created by Sir Lskyp on 25-Mar-17.
- */
+
 public class DataPacket extends DataAckBasePacket {
 
-    byte[] data;
+    public static final byte OP_DATA = 3;
+
+    public byte[] data;
 
 
-    DataPacket(int sizeOfDataBlock) {
+    public DataPacket() {
 
-        this.opcode = "3".getBytes();
-        this.data = new byte[sizeOfDataBlock];
+        this.opcode[OFFSET_REQUEST] = OP_DATA;
     }
 
+    @Override
+    public byte[] createPackage(byte[] dataToTransfer) {
+
+        this.packageByteArray = new byte[DEFAULT_PACKAGE_SIZE];
+        this.currentActualPackageSize = 0;
+
+        this.incrementBlockNum();
+
+        this.addToArrayHeader();
+
+        this.data = dataToTransfer;
+
+//        System.arraycopy(this.data, 0, this.packageByteArray, this.currentActualPackageSize, this.data.length);
+        this.addToArray(this.data);
+
+        return this.packageByteArray;
+    }
+
+    private void incrementBlockNum() {
+
+        if (this.blockNum[1] != (byte)0xFFFF) ++this.blockNum[1];
+        else {
+
+            ++this.blockNum[0];
+            this.blockNum[1] = (byte) 0;
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class Main extends Application {
 
 
         primaryStage.setTitle("TFTP client");
-        primaryStage.setScene(new Scene(root, 300, 300));
+        primaryStage.setScene(new Scene(root, 275, 340));
         primaryStage.show();
 
 

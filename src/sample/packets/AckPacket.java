@@ -2,14 +2,23 @@ package sample.packets;
 
 import sample.basepackets.DataAckBasePacket;
 
-/**
- * Created by Sir Lskyp on 25-Mar-17.
- */
+
 public class AckPacket extends DataAckBasePacket {
 
-    AckPacket(byte[] numOfDataBlock) {
+    public static final byte OP_ACK = 4;
+
+    public AckPacket() {
+
+        this.opcode[OFFSET_REQUEST] = OP_ACK;
+    }
+
+    @Override
+    public byte[] createPackage(byte[] numOfDataBlock){
 
         this.blockNum = numOfDataBlock;
-        this.opcode = "4".getBytes();
+
+        this.addToArrayHeader();
+
+        return this.packageByteArray;
     }
 }

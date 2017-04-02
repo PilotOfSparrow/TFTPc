@@ -2,14 +2,13 @@ package sample.packets;
 
 import sample.basepackets.ReadWriteBasePacket;
 
-/**
- * Created by Sir Lskyp on 25-Mar-17.
- */
+
 public class ReadRequestPacket extends ReadWriteBasePacket {
 
+    public static final byte OP_READ = 1;
 
-  ReadRequestPacket() {
+  public ReadRequestPacket() {
 
-      this.opcode = "1".getBytes();
+      this.opcode[OFFSET_REQUEST] = OP_READ;
   }
 }
